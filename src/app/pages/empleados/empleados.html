@@ -1,0 +1,53 @@
+<h2>Empleados</h2>
+
+<input type="text" placeholder="Cédula" [(ngModel)]="empleado.cedula">
+
+<input type="text" placeholder="Nombre" [(ngModel)]="empleado.nombre">
+
+<input type="text" placeholder="Apellido" [(ngModel)]="empleado.apellido">
+
+<input type="email" placeholder="Correo" [(ngModel)]="empleado.correo">
+
+<select [(ngModel)]="empleado.estado">
+  <option value="ACTIVO">ACTIVO</option>
+  <option value="INACTIVO">INACTIVO</option>
+</select>
+
+<input type="number" placeholder="ID Departamento" [(ngModel)]="empleado.departamento.id">
+
+<input type="number" placeholder="ID Cargo" [(ngModel)]="empleado.cargo.id">
+
+<button (click)="guardar()">
+  {{ editando ? 'Actualizar' : 'Guardar' }}
+</button>
+
+<button *ngIf="editando" (click)="cancelar()">
+  Cancelar
+</button>
+
+<hr>
+
+<table border="1" cellpadding="8">
+  <tr>
+    <th>ID</th>
+    <th>Cédula</th>
+    <th>Nombre</th>
+    <th>Apellido</th>
+    <th>Correo</th>
+    <th>Estado</th>
+    <th>Acciones</th>
+  </tr>
+
+  <tr *ngFor="let e of empleados">
+    <td>{{ e.id }}</td>
+    <td>{{ e.cedula }}</td>
+    <td>{{ e.nombre }}</td>
+    <td>{{ e.apellido }}</td>
+    <td>{{ e.correo }}</td>
+    <td>{{ e.estado }}</td>
+    <td>
+      <button (click)="editar(e)">Editar</button>
+      <button (click)="eliminar(e.id)">Eliminar</button>
+    </td>
+  </tr>
+</table>

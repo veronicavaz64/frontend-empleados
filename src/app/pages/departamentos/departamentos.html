@@ -1,0 +1,33 @@
+<h2>Departamentos</h2>
+
+<input type="text" placeholder="Nombre" [(ngModel)]="departamento.nombre">
+<input type="text" placeholder="Descripción" [(ngModel)]="departamento.descripcion">
+
+<button (click)="guardar()">
+  {{ editando ? 'Actualizar' : 'Guardar' }}
+</button>
+
+<button *ngIf="editando" (click)="cancelar()">
+  Cancelar
+</button>
+
+<hr>
+
+<table border="1" cellpadding="8">
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Descripción</th>
+    <th>Acciones</th>
+  </tr>
+
+  <tr *ngFor="let d of departamentos">
+    <td>{{ d.id }}</td>
+    <td>{{ d.nombre }}</td>
+    <td>{{ d.descripcion }}</td>
+    <td>
+      <button (click)="editar(d)">Editar</button>
+      <button (click)="eliminar(d.id)">Eliminar</button>
+    </td>
+  </tr>
+</table>

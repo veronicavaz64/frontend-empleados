@@ -1,0 +1,60 @@
+<h2>Asistencias</h2>
+
+<input type="date" [(ngModel)]="asistencia.fecha">
+
+<input type="time" [(ngModel)]="asistencia.horaEntrada">
+
+<input type="time" [(ngModel)]="asistencia.horaSalida">
+
+<input type="text" placeholder="Observación" [(ngModel)]="asistencia.observacion">
+
+<input type="number" placeholder="ID Empleado" [(ngModel)]="asistencia.empleado.id">
+
+<button (click)="guardar()">
+  {{ editando ? 'Actualizar' : 'Guardar' }}
+</button>
+
+<button *ngIf="editando" (click)="cancelar()">
+  Cancelar
+</button>
+
+<hr>
+
+<h3>Buscar asistencias por fecha</h3>
+
+<input type="date" [(ngModel)]="fechaBuscar">
+
+<button (click)="buscarPorFecha()">
+  Buscar
+</button>
+
+<button (click)="listar()">
+  Mostrar todas
+</button>
+
+<hr>
+
+<table border="1" cellpadding="8">
+  <tr>
+    <th>ID</th>
+    <th>Fecha</th>
+    <th>Entrada</th>
+    <th>Salida</th>
+    <th>Observación</th>
+    <th>Empleado</th>
+    <th>Acciones</th>
+  </tr>
+
+  <tr *ngFor="let a of asistencias">
+    <td>{{ a.id }}</td>
+    <td>{{ a.fecha }}</td>
+    <td>{{ a.horaEntrada }}</td>
+    <td>{{ a.horaSalida }}</td>
+    <td>{{ a.observacion }}</td>
+    <td>{{ a.empleado?.nombre }} {{ a.empleado?.apellido }}</td>
+    <td>
+      <button (click)="editar(a)">Editar</button>
+      <button (click)="eliminar(a.id)">Eliminar</button>
+    </td>
+  </tr>
+</table>

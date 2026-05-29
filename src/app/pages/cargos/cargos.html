@@ -1,0 +1,34 @@
+<h2>Cargos</h2>
+
+<input type="text" placeholder="Nombre" [(ngModel)]="cargo.nombre">
+
+<input type="number" placeholder="Salario Base" [(ngModel)]="cargo.salarioBase">
+
+<button (click)="guardar()">
+  {{ editando ? 'Actualizar' : 'Guardar' }}
+</button>
+
+<button *ngIf="editando" (click)="cancelar()">
+  Cancelar
+</button>
+
+<hr>
+
+<table border="1" cellpadding="8">
+  <tr>
+    <th>ID</th>
+    <th>Nombre</th>
+    <th>Salario</th>
+    <th>Acciones</th>
+  </tr>
+
+  <tr *ngFor="let c of cargos">
+    <td>{{ c.id }}</td>
+    <td>{{ c.nombre }}</td>
+    <td>{{ c.salarioBase }}</td>
+    <td>
+      <button (click)="editar(c)">Editar</button>
+      <button (click)="eliminar(c.id)">Eliminar</button>
+    </td>
+  </tr>
+</table>

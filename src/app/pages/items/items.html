@@ -1,0 +1,23 @@
+<h1>Gestión de Items</h1>
+
+<input type="text" placeholder="Nombre" [(ngModel)]="nuevoItem.nombre">
+
+<input type="text" placeholder="Descripción" [(ngModel)]="nuevoItem.descripcion">
+
+<input type="number" placeholder="Precio" [(ngModel)]="nuevoItem.precio">
+
+<button (click)="guardar()">Guardar</button>
+
+<hr>
+
+<h2>Lista</h2>
+
+<ul>
+  <li *ngFor="let item of items">
+    {{ item.nombre }} - {{ item.descripcion }} - ${{ item.precio }}
+
+    <button (click)="eliminar(item.id)">
+      Eliminar
+    </button>
+  </li>
+</ul>
